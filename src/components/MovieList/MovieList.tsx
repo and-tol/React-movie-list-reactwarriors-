@@ -1,30 +1,37 @@
 import React, { Component } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { moviesData } from '../../data/moviesData';
+import { Movie } from './../../data/moviesData';
+import { MovieItem } from '../MovieItem/MovieItem';
 
-export class MovieList extends Component {
+interface List {
+  movies: Array<Movie>;
+}
+
+export class MovieList extends Component<{}, List> {
   constructor() {
     super();
     this.state = {
       movies: moviesData,
     };
+
+    // this.removeMovie = this.removeMovie.bind(this);
   }
-  
+
+  removeMovie = (movie) => {
+    const updateMovies = this.state.movies.filter((item) => item.id !== movie.id);
+    this.state.movies = updateMovies;
+
+    this.setState({
+      movies: updateMovies,
+    });
+  };
+
   render() {
     return (
       <div>
-        {this.state.movies.map((movie, key) => {
-          return (
-            <div key={movie.id} className='card' style={{ width: '100%' }}>
-              <img className='card-img-top' src={movie.poster_path} />
-              <div className='card-body'>
-                <h6 className='card-title'>{movie.title}</h6>
-                <div className='d-flex justify-content-between align-items-center'>
-                  <p className='mb-0'>Rating: {movie.vote_average}</p>
-                  <button type='button' href='#' className='btn btn-primary'>Will Watch</button>
-                </div>
-              </div>
-            </div>
-          );
+        {this.state.movies.map((movie) => {
+          return <MovieItem key={movie.id} movie={movie} removeMovie={this.removeMovie} />;
         })}
       </div>
     );
