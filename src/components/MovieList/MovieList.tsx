@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { moviesData } from '../../data/moviesData';
 import { Movie } from './../../data/moviesData';
 import { MovieItem } from '../MovieItem/MovieItem';
@@ -29,10 +28,17 @@ export class MovieList extends Component<{}, List> {
 
   render() {
     return (
-      <div>
-        {this.state.movies.map((movie) => {
-          return <MovieItem key={movie.id} movie={movie} removeMovie={this.removeMovie} />;
-        })}
+      <div className='container'>
+        <div className='row'>
+          <div className='col-9'>
+            {this.state.movies.map((movie) => {
+              return <MovieItem key={movie.id} movie={movie} removeMovie={this.removeMovie} />;
+            })}
+          </div>
+          <div className="col-3">
+            <p>Will Watch 0</p>
+          </div>
+        </div>
       </div>
     );
   }
