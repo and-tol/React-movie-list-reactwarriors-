@@ -1,4 +1,20 @@
-export const moviesData = [
+export interface Movie {
+  vote_count: number;
+    id: number;
+    video: number;
+    vote_average: number;
+    title: string;
+    popularity: number;
+    poster_path: string;
+    original_language: string;
+    original_title: string;
+    backdrop_path: string;
+    adult: boolean;
+    overview: string;
+    release_date: string;
+}
+
+export const moviesData: Array<Movie> = [
   {
     vote_count: 4592,
     id: 299536,

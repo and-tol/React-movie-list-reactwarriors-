@@ -1,5 +1,5 @@
 {
-  "name": "empty-project",
+  "name": "movie-list",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -13,6 +13,7 @@
     "start": "npx webpack-dev-server --hot --open --mode development"
   },
   "dependencies": {
+    "bootstrap": "^4.4.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-hot-loader": "^4.12.20"

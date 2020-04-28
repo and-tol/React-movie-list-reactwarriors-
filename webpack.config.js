@@ -2,11 +2,11 @@ const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const config = {
-  entry: ['react-hot-loader/patch', './src/index.tsx'],
+module.exports = {
+  entry: './src/index.tsx',
   devtool: 'source-map',
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.join(__dirname, './dist'),
     filename: 'index.js',
   },
   module: {
@@ -16,9 +16,25 @@ const config = {
         loader: 'babel-loader',
         exclude: /node_modules/,
       },
+      // {
+      //   test: /\.scss$/,
+      //   use: ['style-loader', 'css-loader', 'sass-loader'],
+      // },
       {
-        test: /\.scss$/,
-        use: ['style-loader', 'css-loader', 'sass-loader'],
+        test: /\.(css|scss)$/,
+        use: [
+          // style-loader
+          { loader: 'style-loader' },
+          // css-loader
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+            },
+          },
+          // sass-loader
+          { loader: 'sass-loader' },
+        ],
       },
       {
         test: /\.(png|svg|jpe?g|gif)$/,
@@ -34,20 +50,16 @@ const config = {
     ],
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.tsx', '.ts'],
-    alias: {
-      'react-dom': '@hot-loader/react-dom',
-    },
+    extensions: ['.wasm', '.ts', '.tsx', '.mjs', '.cjs', '.js', '.json'],
   },
   devServer: {
-    contentBase: './dist',
+    // contentBase: path.join(__dirname, 'dist'),
+    historyApiFallback: true,
   },
   plugins: [
     new HtmlWebpackPlugin({
-      appMountId: 'app',
-      filename: 'index.html',
+      // appMountId: 'root',
+      template: './src/index.html',
     }),
   ],
 };
-
-module.exports = config;

@@ -1,6 +1,6 @@
 .history
 yarn.lock
-
+package-lock.json
 .cache/
 coverage/
 dist/*
