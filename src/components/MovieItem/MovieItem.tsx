@@ -24,6 +24,10 @@ export class MovieItem extends React.Component<Item, MovieItemProps> {
     };
   }
 
+  componentWillUnmount(){
+    console.log('unmount');
+  }
+
   render() {
     const { movie, removeMovie, addMovieToWillWatch, removeMovieFromWillWatch } = this.props;
     const url: string = 'https://image.tmdb.org/t/p/w500';
