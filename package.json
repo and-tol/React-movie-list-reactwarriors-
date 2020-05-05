@@ -10,7 +10,9 @@
     "clean": "rm dist/bundle.js",
     "build-dev": "webpack -d --mode development",
     "build-prod": "webpack -p --mode production",
-    "start": "npx webpack-dev-server --hot --open --mode development"
+    "start": "npx webpack-dev-server --hot --open --mode development",
+    "predeploy": "npm run build-prod",
+    "deploy": "gh-pages -d build-prod"
   },
   "dependencies": {
     "bootstrap": "^4.4.1",

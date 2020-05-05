@@ -3,8 +3,8 @@ yarn.lock
 package-lock.json
 .cache/
 coverage/
-dist/*
-!dist/index.html
+# dist/*
+# !dist/index.html
 node_modules/
 *.log
 
@@ -166,7 +166,7 @@ typings/
 .nuxt
 
 # rollup.js default build output
-dist/
+# dist/
 
 # Uncomment the public line if your project uses Gatsby
 # https://nextjs.org/blog/next-9-1#public-directory-support
